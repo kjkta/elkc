@@ -9,15 +9,18 @@ module.exports = {
     ...(dev ? ["react-hot-loader/patch"] : []),
     path.resolve(__dirname, "index")
   ],
-  devtool: 'source-map',
+  devtool: "source-map",
   devServer: {
-    hot: true
+    hotOnly: true,
+    contentBase: path.resolve(__dirname, "demo"),
   },
   output: {
     path: __dirname,
     filename: "bundle.js",
     library: "RegistrationForm",
-    libraryTarget: "window"
+    libraryTarget: "window",
+    hotUpdateChunkFilename: 'hmr/hot-update.js',
+    hotUpdateMainFilename: 'hmr/hot-update.json'
   },
   module: {
     rules: [
